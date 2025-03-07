@@ -1,0 +1,333 @@
+/* === CHUNG === */
+.card {
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.card-title small, .card-title .text-muted {
+    font-size: 85%;
+    opacity: 0.75;
+}
+
+.important {
+    color: #dc3545;
+    margin-left: 3px;
+}
+
+/* === BẢNG DANH SÁCH DÒNG XE / HÃNG XE === */
+#myTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+#myTable thead {
+    background-color: #f8fafc;
+}
+
+#myTable th {
+    padding: 15px;
+    font-weight: 600;
+    color: #4b5563;
+    border-bottom: 2px solid #e5e7eb;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+#myTable td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    border-bottom: 1px solid #edf2f7;
+    color: #333;
+}
+
+#myTable tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+#myTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Định dạng tên dòng xe / hãng xe */
+#myTable td:nth-child(2) {
+    font-weight: 500;
+    color: #2d3748;
+}
+
+/* === NÚT THAO TÁC === */
+#myTable a.text-primary,
+#myTable a.text-danger {
+    text-decoration: none;
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin: 0 2px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+#myTable a i {
+    margin-right: 5px;
+    font-size: 0.9rem;
+}
+
+#myTable a.text-primary {
+    color: #3182ce !important;
+    background-color: rgba(49, 130, 206, 0.1);
+}
+
+#myTable a.text-primary:hover {
+    background-color: rgba(49, 130, 206, 0.2);
+}
+
+#myTable a.text-danger {
+    color: #e53e3e !important;
+    background-color: rgba(229, 62, 62, 0.1);
+}
+
+#myTable a.text-danger:hover {
+    background-color: rgba(229, 62, 62, 0.2);
+}
+
+/* === FORM THÊM/SỬA === */
+.form-group label,
+.form-row label {
+    color: #4a5568;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    padding: 10px 12px;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+
+.form-control.is-invalid {
+    border-color: #e53e3e;
+    background-image: none;
+}
+
+.invalid-feedback {
+    color: #e53e3e;
+    margin-top: 5px;
+    font-size: 0.85rem;
+}
+
+.form-row {
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* === BUTTON STYLES === */
+.btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-success {
+    background-color: #38a169;
+    border-color: #38a169;
+    box-shadow: 0 2px 5px rgba(56, 161, 105, 0.2);
+    color: white !important;
+}
+
+.btn-success:hover {
+    background-color: #2f855a;
+    border-color: #2f855a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(56, 161, 105, 0.3);
+}
+
+.btn-outline-info {
+    color: #3182ce;
+    border-color: #3182ce;
+    background: transparent;
+}
+
+.btn-outline-info:hover {
+    background-color: #3182ce;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(49, 130, 206, 0.3);
+}
+
+.btn-secondary {
+    background-color: #718096;
+    border-color: #718096;
+    box-shadow: 0 2px 5px rgba(113, 128, 150, 0.2);
+    color: white !important;
+}
+
+.btn-secondary:hover {
+    background-color: #4a5568;
+    border-color: #4a5568;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(113, 128, 150, 0.3);
+}
+
+.btn i {
+    margin-right: 5px;
+    font-size: 0.9rem;
+}
+
+/* === ANIMATION === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 992px) {
+    .col-8.offset-2 {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #myTable {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .form-row .col-md-6,
+    .form-row .col-md-4,
+    .form-row .col-md-12 {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    td[style="display: flex; justify-content: center"] {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    td[style="display: flex; justify-content: center"] a {
+        margin: 2px 0;
+    }
+}
+
+/* === NOTIFICATION === */
+.alert {
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+}
+
+.alert-success {
+    background-color: #def7ec;
+    color: #046c4e;
+}
+
+.alert-danger {
+    background-color: #fde8e8;
+    color: #c81e1e;
+}
+
+.alert-warning {
+    background-color: #feecdc;
+    color: #c05621;
+}
+
+.alert-info {
+    background-color: #e1effe;
+    color: #1e429f;
+}
+
+/* === DARK MODE COMPATIBILITY === */
+@media (prefers-color-scheme: dark) {
+    .card {
+        background-color: #2d3748;
+    }
+
+    .card-title, .form-group label, .form-row label {
+        color: #e2e8f0;
+    }
+
+    #myTable thead {
+        background-color: #2d3748;
+    }
+
+    #myTable th {
+        color: #e2e8f0;
+        border-bottom: 2px solid #4a5568;
+    }
+
+    #myTable td {
+        border-bottom: 1px solid #4a5568;
+        color: #e2e8f0;
+    }
+
+    #myTable td:nth-child(2) {
+        color: #e2e8f0;
+    }
+
+    #myTable tbody tr:hover {
+        background-color: #4a5568;
+    }
+
+    .form-control {
+        background-color: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+
+    .form-control:focus {
+        border-color: #4299e1;
+    }
+}

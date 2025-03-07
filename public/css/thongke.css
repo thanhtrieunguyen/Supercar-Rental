@@ -1,0 +1,215 @@
+.stats-card {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stats-card .card-body {
+    padding: 1.5rem;
+}
+
+.stats-card .lead {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #555;
+    letter-spacing: 0.5px;
+}
+
+.stats-card .stats-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.5rem;
+}
+
+.stats-card .stats-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.stats-card .stats-label {
+    font-size: 0.85rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
+/* Customer card */
+.customer-card {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    border-left: 4px solid #dc3545;
+}
+
+.customer-card .stats-icon {
+    background-color: rgba(220, 53, 69, 0.15);
+    color: #dc3545;
+}
+
+/* Car card */
+.car-card {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    border-left: 4px solid #17a2b8;
+}
+
+.car-card .stats-icon {
+    background-color: rgba(23, 162, 184, 0.15);
+    color: #17a2b8;
+}
+
+/* Revenue card */
+.revenue-card {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    border-left: 4px solid #28a745;
+}
+
+.revenue-card .stats-icon {
+    background-color: rgba(40, 167, 69, 0.15);
+    color: #28a745;
+}
+
+/* Tables styling */
+.data-table-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.data-table-container .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+}
+
+table.custom-table {
+    width: 100%;
+}
+
+table.custom-table thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #e9ecef;
+    color: #495057;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    padding: 0.75rem;
+}
+
+table.custom-table tbody td {
+    border-color: #e9ecef;
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+/* Top cars styling */
+.top-cars-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.top-cars-card .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    padding: 0.75rem 0;
+    margin-bottom: 0.5rem;
+}
+
+.top-cars-list {
+    margin: 0;
+    padding: 0;
+}
+
+.top-cars-list .list-header {
+    background-color: #f8f9fa;
+    font-size: 0.8rem;
+    color: #6c757d;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.top-cars-item {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #eee;
+    transition: all 0.2s ease;
+}
+
+.top-cars-item:hover {
+    background-color: #f8f9fa;
+}
+
+.top-cars-item:last-child {
+    border-bottom: none;
+}
+
+.top-cars-number {
+    width: 28px;
+    height: 28px;
+    background-color: #f8f9fa;
+    color: #495057;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.top-cars-item a {
+    color: #212529;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.top-cars-item a:hover {
+    color: #007bff;
+}
+
+.top-cars-count {
+    font-weight: 600;
+    color: #495057;
+}
+
+.top-cars-count small {
+    font-size: 0.75rem;
+    color: #6c757d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stats-card {
+        margin-bottom: 1rem;
+    }
+
+    .stats-card .stats-value {
+        font-size: 1.5rem;
+    }
+
+    .data-table-container {
+        margin-bottom: 1rem;
+    }
+
+    .custom-table {
+        font-size: 0.9rem;
+    }
+}
