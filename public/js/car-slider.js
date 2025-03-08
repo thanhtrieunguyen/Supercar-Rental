@@ -93,4 +93,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         updateSlider();
     }, 10000);
+
+    const scrollButton = document.querySelector('.hero-banner__scroll');
+    if (scrollButton) {
+        scrollButton.addEventListener('click', function() {
+            const targetSection = document.querySelector('.best-cars-section');
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // Add ID to the how-it-works section for smooth scrolling
+    const howItWorksSection = document.getElementById('wrapper1');
+    if (howItWorksSection) {
+        howItWorksSection.id = 'how-it-works';
+    }
 });

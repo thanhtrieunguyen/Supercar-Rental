@@ -45,7 +45,7 @@
     @include('layouts.header')
 
     <div class="@yield('container-class', 'container-xl')"
-        style="min-height: calc(100vh - 166px); @yield('container-style', '') padding-top: 8rem;">
+        style="min-height: calc(100vh - 166px); @yield('container-style', '') padding-top: 5rem;">
         @yield('content')
     </div>
 

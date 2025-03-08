@@ -1,14 +1,26 @@
 @extends('layouts.index')
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Thanh toán thành công</div>
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/payment-result.css') }}">
+@endpush
 
-                    <div class="card-body">
-                        {{ $message }}
+@section('content')
+    <div class="payment-result-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="payment-card payment-success">
+                        <div class="payment-card-header">Thanh toán thành công</div>
+
+                        <div class="payment-card-body">
+                            <div class="success-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="success-message">
+                                {{ $message }}
+                            </div>
+                            <a href="{{ route('pages.trangchu') }}" class="btn btn-back">Trở về trang chủ</a>
+                        </div>
                     </div>
                 </div>
             </div>

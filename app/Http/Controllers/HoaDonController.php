@@ -48,18 +48,22 @@ class HoaDonController extends Controller
         return back()->with(['thong-bao' => 'Xóa thành công hoá đơn!', 'type' => 'success']);
     }
 
-    public function updateTinhTrang(Request $request)
+        public function updateTinhTrang(Request $request)
     {
         try {
             $hoaDon = HoaDon::where('idhoadon', $request->idhoadon)->firstOrFail();
-            if ($hoaDon->tinhtranghoadon == 1) {
-
+            if ($hoaDon->tinhtranghoadon == 1 && $request->tinhtranghoadon == 0) {
+                // Nếu đang chuyển từ đã thanh toán sang chưa thanh toán
                 return back()->with(['thong-bao' => 'Không thể bỏ duyệt hoá đơn khi đã thanh toán!', 'type' => 'danger']);
             } else {
                 $hoaDon->update([
                     'tinhtranghoadon' => $request->tinhtranghoadon,
-                    'ngaythanhtoan' => now()
+                    'ngaythanhtoan' => $request->tinhtranghoadon == 1 ? now() : $hoaDon->ngaythanhtoan
                 ]);
+
+                $xe = $hoaDon->xe;
+                $xe->tinhtrang = $request->tinhtranghoadon == 1 ? 1 : -1;
+                $xe->save();
 
                 return response()->json([
                     'error' => false

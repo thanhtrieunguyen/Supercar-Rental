@@ -81,6 +81,8 @@
                             <td>
                                 @if($xe->tinhtrang == 0)
                                 <span class="badge badge-success">Chưa đặt</span>
+                                @elseif($xe->tinhtrang == -1)
+                                <span class="badge badge-info">Chờ thanh toán</span>
                                 @else
                                 <span class="badge badge-warning">Đã đặt</span>
                                 @endif

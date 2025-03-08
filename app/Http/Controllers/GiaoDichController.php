@@ -19,7 +19,7 @@ class GiaoDichController extends Controller
 {
     public function __construct()
     {
-        // 
+        //
     }
 
     public function index()
@@ -54,7 +54,6 @@ class GiaoDichController extends Controller
         $giaodich->save();
 
         return redirect()->route('giaodich.index')->with('success', 'Giao dịch đã được thêm thành công.');
-
     }
 
     public function show($id)
@@ -132,45 +131,54 @@ class GiaoDichController extends Controller
         try {
             $giaoDich = GiaoDich::where('idgiaodich', $id)->firstOrFail();
             $xe = Xe::where('idxe', $giaoDich->idxe)->firstOrFail();
+
             $xe->tinhtrang = 0;
             $xe->save();
+
             $giaoDich->delete();
             return back()->with(['thong-bao' => 'Xóa thành công giao dịch!', 'type' => 'success']);
         } catch (QueryException $e) {
-            // Xử lý lỗi xóa hoá đơn do vi phạm ràng buộc khóa ngoại
             return back()->with(['thong-bao' => 'Không thể xóa giao dịch này do giao dịch này đã được duyệt. Để xoá yêu cầu bỏ dấu tick ở trường \'Duyệt\'. Hoặc xoá hoá đơn liên quan đến giao dịch này ở \'Quản lý hoá đơn\' ', 'type' => 'danger']);
         }
-
     }
 
     public function updateTinhTrang(Request $request)
     {
         try {
             $giaoDich = GiaoDich::where('idgiaodich', $request->idgiaodich)->firstOrFail();
+            $giaoDich->tinhtranggiaodich = $request->tinhtranggiaodich;
+            $giaoDich->save();
+
+            $xe = Xe::where('idxe', $giaoDich->idxe)->firstOrFail();
 
             if ($request->tinhtranggiaodich == 1) {
-                // Tạo một record mới cho bảng hoadon
-                $hoaDon = new HoaDon();
-                $hoaDon->idgiaodich = $giaoDich->idgiaodich;
-                $hoaDon->iduser = $giaoDich->iduser;
-                $hoaDon->idxe = $giaoDich->idxe;
-                $hoaDon->ngaythanhtoan = null;
-                $hoaDon->phidv = $giaoDich->phidv;
-                $hoaDon->tongtien = $giaoDich->tongtien;
-                $hoaDon->tinhtranghoadon = 0;
-                $hoaDon->ngaynhanxe = $giaoDich->ngaynhanxe;
-                $hoaDon->ngaytraxe = $giaoDich->ngaytraxe;
-                $hoaDon->save();
+                $existsHoaDon = HoaDon::where('idgiaodich', $request->idgiaodich)->exists();
+                if (!$existsHoaDon) {
+                    $hoaDon = new HoaDon();
+                    $hoaDon->idgiaodich = $giaoDich->idgiaodich;
+                    $hoaDon->iduser = $giaoDich->iduser;
+                    $hoaDon->idxe = $giaoDich->idxe;
+                    $hoaDon->ngaythanhtoan = null;
+                    $hoaDon->phidv = $giaoDich->phidv;
+                    $hoaDon->tongtien = $giaoDich->tongtien;
+                    $hoaDon->tinhtranghoadon = 0;
+                    $hoaDon->ngaynhanxe = $giaoDich->ngaynhanxe;
+                    $hoaDon->ngaytraxe = $giaoDich->ngaytraxe;
+                    $hoaDon->save();
+                }
+
+                $xe->tinhtrang = -1;
+            } else {
+                $existsHoaDon = HoaDon::where('idgiaodich', $request->idgiaodich)->exists();
+                if ($existsHoaDon) {
+                    $hoaDon = HoaDon::where('idgiaodich', $request->idgiaodich)->firstOrFail();
+                    $hoaDon->delete();
+                }
+
+                $xe->tinhtrang = -1;
             }
 
-            $existsHoaDon = HoaDon::where('idgiaodich', $request->idgiaodich)->exists();
-            if ($request->tinhtranggiaodich == 0 && $existsHoaDon == true) {
-                $hoaDon = HoaDon::where('idgiaodich', $request->idgiaodich)->firstOrFail();
-                $hoaDon->delete();
-            }
-
-
-            $giaoDich->update(['tinhtranggiaodich' => $request->tinhtranggiaodich]);
+            $xe->save();
 
             if ($request->tinhtranggiaodich == 1) {
                 $giaoDich = GiaoDich::findOrFail($request->idgiaodich);
@@ -179,11 +187,11 @@ class GiaoDichController extends Controller
 
             return response()->json([
                 'status' => 'OK',
-                'message' => 'Tình trạng GD đã được cập nhật'
+                'message' => 'Tình trạng giao dịch đã được cập nhật'
             ]);
         } catch (Exception $e) {
             return response()->json([
-                'error' => false,
+                'error' => true,
                 'message' => $e->getMessage()
             ]);
         }
@@ -205,6 +213,7 @@ class GiaoDichController extends Controller
                 'idxe' => $request->id_xe,
             ]);
 
+            Xe::where('idxe', $request->id_xe)->update(['tinhtrang' => -1]);
 
             return response()->json([
                 'error' => false
