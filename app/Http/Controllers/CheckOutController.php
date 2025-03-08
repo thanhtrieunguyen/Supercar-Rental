@@ -9,8 +9,8 @@ class CheckOutController extends Controller
 {
     public function initPayment(Request $request)
     {
-        $vnp_TmnCode = "Q9B60MZQ"; // Mã website
-        $vnp_HashSecret = "INEZCVWNMKJNBTSSYUUVTUYYRKOVQNVV"; // Chuỗi bí mật
+        $vnp_TmnCode = ""; // Mã website
+        $vnp_HashSecret = ""; // Chuỗi bí mật
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"; // URL thanh toán
         $vnp_Returnurl = route('vnpay.return'); // URL trả về
 
@@ -62,7 +62,7 @@ class CheckOutController extends Controller
 
     public function handlePaymentReturn(Request $request)
     {
-        $vnp_HashSecret = "INEZCVWNMKJNBTSSYUUVTUYYRKOVQNVV"; // Chuỗi bí mật
+        $vnp_HashSecret = ""; // Chuỗi bí mật
 
         $inputData = $request->all();
         $vnp_SecureHash = $inputData['vnp_SecureHash'];
@@ -94,6 +94,13 @@ class CheckOutController extends Controller
                     $hoadon->tinhtranghoadon = 1; // Cập nhật tình trạng hoá đơn thành "Đã thanh toán"
                     $hoadon->ngaythanhtoan = now(); // Cập nhật ngày thanh toán
                     $hoadon->save();
+                }
+
+                // Nếu hóa đơn đã thanh toán thì update tình trạng xe thành 1 (đã được đặt)
+                if($hoadon->tinhtranghoadon == 1) {
+                    $giaoDich = $hoadon->giaoDich;
+                    $giaoDich->xe->tinhtrang = 1;
+                    $giaoDich->xe->save();
                 }
 
                 return redirect()->route('success', ['message' => 'Thanh toán thành công']);

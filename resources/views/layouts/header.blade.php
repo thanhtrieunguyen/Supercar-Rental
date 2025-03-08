@@ -77,7 +77,7 @@
     height: 2px;
     bottom: 0;
     left: 50%;
-    background-color: #4299e1;
+    background-color: #5fcf86;
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }

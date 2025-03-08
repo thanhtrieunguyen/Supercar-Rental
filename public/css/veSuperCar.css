@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Phần Hero */
 .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/upload/slides/hero-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/upload/slides/bg1.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -150,7 +150,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Phần Tầm nhìn */
 .vision-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/upload/slides/mission-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/upload/slides/listing_img4.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -272,3 +272,11 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--white);
 }
 
+div.testimonial-card {
+    min-height: 470px;
+}
+
+div.testimonial-textdiv {
+    min-height: 180px;
+    overflow: hidden;
+}
